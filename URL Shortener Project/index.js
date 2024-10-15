@@ -1,9 +1,11 @@
 const express = require('express')
-const urlRoute = require('./routes/urlRoutes.js')
-const staticRoute = require('./routes/staticRouter.js')
 const { connectDb } = require('./connection.js')
 const URL = require('./models/url.js')
 const path = require('path')
+
+const urlRoute = require('./routes/urlRoutes.js')
+const staticRoute = require('./routes/staticRouter.js')
+const userRoute = require('./routes/user.js')
 
 
 const app = express()
@@ -32,7 +34,7 @@ app.get('/test', async (req,res)=>{
 })
 
 app.use('/url', urlRoute)
-
+app.use('/user', userRoute)
 app.use('/', staticRoute)
 
 
